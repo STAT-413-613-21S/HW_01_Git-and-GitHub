@@ -550,14 +550,62 @@ summary {
 </ul></li>
 </ul>
 <ol style="list-style-type: decimal">
-<li><p>Use relative paths and a readr function to load these files into four tibbles.</p></li>
-<li><p>These data are messy. The observational units in <code>fert</code>, <code>life</code>, and <code>pop</code> are locations in space-time (e.g. Aruba in 2017). Recall tidy data should have one observational unit per row.<br />
-</p></li>
+<li>Use relative paths and a readr function to load these files into four tibbles.</li>
+</ol>
+<pre class="r"><code>country &lt;- read_csv(&quot;country.csv&quot;)
+fertility &lt;- read_csv(&quot;fertility.csv&quot;)
+life_exp &lt;- read_csv(&quot;life_exp.csv&quot;)
+population &lt;- read_csv(&quot;population.csv&quot;)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>These data are messy. The observational units in <code>fert</code>, <code>life</code>, and <code>pop</code> are locations in space-time (e.g. Aruba in 2017). Recall tidy data should have one observational unit per row.<br />
+</li>
 </ol>
 <ul>
 <li>Use dplyr 1.0 functions to tidy these three tibbles and save the updated data frames.</li>
 <li>Use an approach where the tidying function also ensures the variable for <code>year</code> is a numeric.</li>
 </ul>
+<pre><code>## # A tibble: 15,576 x 4
+##    `Country Name` `Country Code`  Year `Fertility Rate`
+##    &lt;chr&gt;          &lt;chr&gt;          &lt;dbl&gt;            &lt;dbl&gt;
+##  1 Aruba          ABW             1960             4.82
+##  2 Aruba          ABW             1961             4.66
+##  3 Aruba          ABW             1962             4.47
+##  4 Aruba          ABW             1963             4.27
+##  5 Aruba          ABW             1964             4.06
+##  6 Aruba          ABW             1965             3.84
+##  7 Aruba          ABW             1966             3.62
+##  8 Aruba          ABW             1967             3.42
+##  9 Aruba          ABW             1968             3.23
+## 10 Aruba          ABW             1969             3.05
+## # ... with 15,566 more rows</code></pre>
+<pre><code>## # A tibble: 15,576 x 4
+##    `Country Name` `Country Code`  Year `Life Expectancy`
+##    &lt;chr&gt;          &lt;chr&gt;          &lt;dbl&gt;             &lt;dbl&gt;
+##  1 Aruba          ABW             1960              65.7
+##  2 Aruba          ABW             1961              66.1
+##  3 Aruba          ABW             1962              66.4
+##  4 Aruba          ABW             1963              66.8
+##  5 Aruba          ABW             1964              67.1
+##  6 Aruba          ABW             1965              67.4
+##  7 Aruba          ABW             1966              67.8
+##  8 Aruba          ABW             1967              68.1
+##  9 Aruba          ABW             1968              68.4
+## 10 Aruba          ABW             1969              68.8
+## # ... with 15,566 more rows</code></pre>
+<pre><code>## # A tibble: 15,576 x 4
+##    `Country Name` `Country Code`  Year Population
+##    &lt;chr&gt;          &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Aruba          ABW             1960      54211
+##  2 Aruba          ABW             1961      55438
+##  3 Aruba          ABW             1962      56225
+##  4 Aruba          ABW             1963      56695
+##  5 Aruba          ABW             1964      57032
+##  6 Aruba          ABW             1965      57360
+##  7 Aruba          ABW             1966      57715
+##  8 Aruba          ABW             1967      58055
+##  9 Aruba          ABW             1968      58386
+## 10 Aruba          ABW             1969      58726
+## # ... with 15,566 more rows</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Use dplyr functions to combine the three tibbles into one and save to a new tibble which includes the fertility rate, population, and life expectancy in each year as well as the region for each country.</p></li>
 <li><p>Make a scatterplot of fertility rate vs life expectancy, color-coding by region and annotating size by the population.<br />

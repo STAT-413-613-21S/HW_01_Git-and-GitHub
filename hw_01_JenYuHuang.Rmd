@@ -61,6 +61,7 @@ I, *<span style="color: red;">Jen Yu Huang</span>*  have:
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
 library(magrittr)
+library(tidyr)
 cs200601 <- read_csv("college_score_200601.csv")
 ```
 
@@ -223,10 +224,39 @@ The World Bank provides loans to countries with the goal of reducing poverty. Th
   + Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.
 
 1. Use relative paths and a readr function to load these files into four tibbles.  
+```{r 3.1, echo=TRUE, message=FALSE, warning=FALSE}
+country <- read_csv("country.csv")
+fertility <- read_csv("fertility.csv")
+life_exp <- read_csv("life_exp.csv")
+population <- read_csv("population.csv")
+```
+
 
 2. These data are messy. The observational units in `fert`, `life`, and `pop` are locations in space-time (e.g. Aruba in 2017). Recall tidy data should have one observational unit per row.  
   - Use dplyr 1.0 functions to tidy these three tibbles and save the updated data frames.
   - Use an approach where the tidying function also ensures the variable for `year` is a numeric.  
+```{r 3.2, echo=FALSE, message=FALSE, warning=FALSE}
+fertility %>%
+  pivot_longer(cols = c(`1960`: `2018`),
+               names_to = "Year",
+               values_to = "Fertility Rate",
+               names_transform = list(Year = as.numeric)
+  )
+
+life_exp %>%
+  pivot_longer(cols = c(`1960`: `2018`),
+               names_to = "Year",
+               values_to = "Life Expectancy",
+               names_transform = list(Year = as.numeric)
+  )
+
+population %>%
+  pivot_longer(cols = c(`1960`: `2018`),
+               names_to = "Year",
+               values_to = "Population",
+               names_transform = list(Year = as.numeric)
+  )
+```
 
 3. Use dplyr functions to combine the three tibbles into one and save to a new tibble which includes the fertility rate, population, and life expectancy in each year as well as the region for each country.
 
