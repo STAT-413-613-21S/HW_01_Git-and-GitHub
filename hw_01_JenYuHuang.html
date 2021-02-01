@@ -433,21 +433,50 @@ summary {
 </ol>
 <ul>
 <li>Which ones?<br />
-<span style="color: red;">MN_EARN_WNE_P10, MD_EARN_WNE_P10, SAT_AVG, ADM_RATE, UGDS, COSTT4_A, AVGFACSAL, GRAD_DEBT_MDN, AGE_ENTRY, FEMALE, PCT_WHITE</span></li>
+<span style="color: red;">MN_EARN_WNE_P10, MD_EARN_WNE_P10, SAT_AVG, ADM_RATE, UGDS, COSTT4_A, AVGFACSAL, GRAD_DEBT_MDN, AGE_ENTRY, FEMALE, PCT_WHITE</span><br />
+</li>
 <li>Why were they read in as type character?<br />
 <span style="color: red;">There are some non-integer in the observations, so R will read in as character</span></li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Use a readr function to fix these variables to be numeric and save the updated tibble.</p></li>
-<li><p>How is average faculty salary associated the mean earnings of students ten years after initial enrollment? Create an appropriate plot and interpret the plot to justify your answer.</p></li>
-<li><p>Does the level of the institution seem to be associated with the mean earnings of students ten years after enrollment? Reproduce this plot in R to explore this relationship and interpret the plot:</p></li>
-<li><p>Plot the mean earnings 10 years after enrollment for level 1 institutions as the Y axis against PCT_WHITE and, in a second plot, against FEMALE.<br />
-</p></li>
+<li>Use a readr function to fix these variables to be numeric and save the updated tibble.</li>
+</ol>
+<pre class="r"><code>new_cs200601 &lt;- read_csv(&quot;college_score_200601.csv&quot;,
+                         col_types = cols(
+  MN_EARN_WNE_P10 = col_double(),
+  MD_EARN_WNE_P10 = col_double(),
+  SAT_AVG = col_double(),
+  ADM_RATE = col_double(),
+  UGDS = col_double(),
+  COSTT4_A = col_double(),
+  AVGFACSAL = col_double(),
+  GRAD_DEBT_MDN = col_double(),
+  AGE_ENTRY = col_double(),
+  FEMALE = col_double(),
+  PCT_WHITE = col_double()
+))</code></pre>
+<pre><code>## Warning: 27004 parsing failures.
+## row      col expected actual                       file
+##   3 SAT_AVG  a double   NULL &#39;college_score_200601.csv&#39;
+##   3 ADM_RATE a double   NULL &#39;college_score_200601.csv&#39;
+##   7 SAT_AVG  a double   NULL &#39;college_score_200601.csv&#39;
+##   7 ADM_RATE a double   NULL &#39;college_score_200601.csv&#39;
+##   8 SAT_AVG  a double   NULL &#39;college_score_200601.csv&#39;
+## ... ........ ........ ...... ..........................
+## See problems(...) for more details.</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>How is average faculty salary associated the mean earnings of students ten years after initial enrollment? Create an appropriate plot and interpret the plot to justify your answer. <span style="color: red;">text</span><br />
+</li>
+<li>Does the level of the institution seem to be associated with the mean earnings of students ten years after enrollment? Reproduce this plot in R to explore this relationship and interpret the plot: <span style="color: red;">text</span><br />
+</li>
+<li>Plot the mean earnings 10 years after enrollment for level 1 institutions as the Y axis against PCT_WHITE and, in a second plot, against FEMALE.<br />
+</li>
 </ol>
 <ul>
 <li>Use a log scale as appropriate.</li>
 <li>Add a loess smoother.</li>
-<li>Describe and interpret the relationship, if any, in each of the plots.</li>
+<li>Describe and interpret the relationship, if any, in each of the plots. <span style="color: red;">text</span><br />
+</li>
 </ul>
 <ol start="7" style="list-style-type: decimal">
 <li>Create a scatter plot of the mean earnings 10 years after enrollment (Y) axis) compared to the median earnings 10 years after enrollment (X axis) using log scales for both.<br />
@@ -455,18 +484,21 @@ summary {
 </ol>
 <ul>
 <li>Add an abline.</li>
-<li>Interpret the plot and the relationship between the two variables.</li>
+<li>Interpret the plot and the relationship between the two variables. <span style="color: red;">text</span><br />
+</li>
 </ul>
 <ol start="8" style="list-style-type: decimal">
 <li>Compute a ranking of level 1 universities based on the ratio of mean earnings 10 years after enrollment compared to median graduation debt.<br />
 </li>
 </ol>
 <ul>
-<li>Identify the top 5 best (highest ROI should be #1 ) and the bottom 5 worst?</li>
-<li>What is American University’s rank and ROI?</li>
+<li>Identify the top 5 best (highest ROI should be #1 ) and the bottom 5 worst?<br />
+<span style="color: red;">text</span></li>
+<li>What is American University’s rank and ROI?<br />
+<span style="color: red;">text</span></li>
 <li>Extra Credit:
 <ul>
-<li>Reproduce the following plot so the <em>AU line automatically adjusts as the new data is entered</em>:</li>
+<li>Reproduce the following plot so the <em>AU line automatically adjusts as the new data is entered</em>: <span style="color: red;">text</span></li>
 <li>What is AU’s new ranking and ROI if the median earnings are used?</li>
 </ul></li>
 </ul>

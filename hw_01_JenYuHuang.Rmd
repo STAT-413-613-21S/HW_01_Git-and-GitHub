@@ -47,17 +47,21 @@ Analysis Elements: Rename the starter file under the analysis directory as `hw_0
 # Canvas Picture, Syllabus, and Student Info
 Review the Syllabus on Canvas and answer the following questions:
 
-I, *Jen Yu Huang*  have:
+I, *<span style="color: red;">Jen Yu Huang</span>*  have:
 
 1. Added a photo of myself (headshot) to my Canvas profile
 
-2. Reviewed the syllabus and the associated policies on the following date: ____Feb 0____
+2. Reviewed the syllabus and the associated policies on the following date: ____<span style="color: red;">Feb 01</span>____
 
 3. Reviewed the American University policies on academic integrity, and understand how they apply to this course and  agree to comply with them for this course
 
 4. Filled in my information in the Student Info spreadsheet on Canvas collaborations
 
 # College Scorecard
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+cs200601 <- read_csv("college_score_200601.csv")
+```
 
 The data folder contains "college_score_200601.csv", a subset of the data in the [College Scorecard](https://collegescorecard.ed.gov/data/) database as of June 1, 2020. These data contain information on colleges in the United States. The variables include:
 
@@ -78,34 +82,52 @@ The data folder contains "college_score_200601.csv", a subset of the data in the
 
 
 2. If you used the default settings for reading in the data, 11 variables are probably type character when they should be numeric. 
-  + Which ones? 
-  + Why were they read in as type character? 
-```{r}
-
-```
-
+  + Which ones?  
+  <span style="color: red;">MN_EARN_WNE_P10, MD_EARN_WNE_P10, SAT_AVG, ADM_RATE, UGDS, COSTT4_A, AVGFACSAL, GRAD_DEBT_MDN, AGE_ENTRY, FEMALE, PCT_WHITE</span>  
+  + Why were they read in as type character?  
+  <span style="color: red;">There are some non-integer in the observations, so R will read in as character</span>  
  
 3. Use a readr function to fix these variables to be numeric and save the updated tibble.
-    
+```{r message=FALSE, warning=FALSE}
+new_cs200601 <- read_csv("college_score_200601.csv",
+                         col_types = cols(
+  MN_EARN_WNE_P10 = col_double(),
+  MD_EARN_WNE_P10 = col_double(),
+  SAT_AVG = col_double(),
+  ADM_RATE = col_double(),
+  UGDS = col_double(),
+  COSTT4_A = col_double(),
+  AVGFACSAL = col_double(),
+  GRAD_DEBT_MDN = col_double(),
+  AGE_ENTRY = col_double(),
+  FEMALE = col_double(),
+  PCT_WHITE = col_double()
+))
+```
+     
 4. How is average faculty salary associated the mean earnings of students ten years after initial enrollment? Create an appropriate plot and interpret the plot to justify your answer.
-
+<span style="color: red;">text</span>  
 5. Does the level of the institution seem to be associated with the mean earnings of students ten years after enrollment? Reproduce this plot in R to explore this relationship and interpret the plot:
-
+<span style="color: red;">text</span>  
 6. Plot the mean earnings 10 years after enrollment for level 1 institutions as the Y axis against PCT_WHITE and, in a second plot, against FEMALE.  
 - Use a log scale as appropriate.
 - Add a loess smoother. 
 - Describe and interpret the relationship, if any, in each of the plots.
-
+<span style="color: red;">text</span>  
 7. Create a scatter plot of the mean earnings 10 years after enrollment (Y) axis) compared to the median earnings 10 years after enrollment (X axis) using log scales for both.  
   + Add an abline. 
   + Interpret the plot and the relationship between the two variables.
-
+<span style="color: red;">text</span>  
 8. Compute a ranking of level 1 universities based on the ratio of mean earnings 10 years after enrollment compared to median graduation debt.   
-  + Identify the top 5 best (highest ROI should be #1 ) and the bottom 5 worst? 
-  + What is American University's rank and ROI? 
+  + Identify the top 5 best (highest ROI should be #1 ) and the bottom 5 worst?  
+  <span style="color: red;">text</span>
+  + What is American University's rank and ROI?  
+  <span style="color: red;">text</span>
 - Extra Credit: 
-  + Reproduce the following plot so the *AU line automatically adjusts as the new data is entered*:
+  + Reproduce the following plot so the *AU line automatically   adjusts as the new data is entered*:
+  <span style="color: red;">text</span>
   + What is AU's new ranking and ROI if the median earnings are used?
+
     
 # World Bank Data
 
