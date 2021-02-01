@@ -274,13 +274,30 @@ all3
   + Facet by these years.
   + Your final plot should look like this (Each element of the formatting is graded):
   + **Interpret the plot in one sentence**.
+```{r 3.4, echo=FALSE, message=FALSE, warning=FALSE}
+country2 <- country %>%
+  rename('Country Name' = 'TableName')
+
+all4 <- all3 %>%
+  full_join(country2) %>%
+  filter(Year == c(1960, 1970, 1980, 1990, 2000, 2010))
+all4
+
+ggplot(all4, aes(`Life Expectancy`, `Fertility Rate`, size = `Population`), na.rm = T) +
+  geom_point(aes(color = `Region`)) +
+  facet_wrap(.~`Year`) +
+  labs(title = "Changes by Region across Decades  
+        World Bank Data")
+```
+  <span style="color: red;">Life expectancy is getting higher while fertility rate is getting lower since 1960 to 2010</span>  
   
 5. Calculate the total population for each region for each year.  
   + Exclude 2018.  
   + Make a line plot of year versus total population, color-coding by region and using a log scale.
   + Your final plot should look like this:
   + **Interpret the plot in one sentence to identify the fastest growing regions**.
-   
+   <span style="color: red;">text</span>
 6. Make a bar plot of population vs region for the year 2010.  
   + Order the bars on the $y$-axis in **decreasing** order of population. 
   + Your final plot should look like this:
+<span style="color: red;">text</span>
