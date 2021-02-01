@@ -279,11 +279,13 @@ country2 <- country %>%
   rename('Country Name' = 'TableName')
 
 all4 <- all3 %>%
-  full_join(country2) %>%
+  full_join(country2)
+
+all4_6010 <- all4 %>%
   filter(Year == c(1960, 1970, 1980, 1990, 2000, 2010))
 all4
 
-ggplot(all4, aes(`Life Expectancy`, `Fertility Rate`, size = `Population`), na.rm = T) +
+ggplot(all4_6010, aes(`Life Expectancy`, `Fertility Rate`, size = `Population`), na.rm = T) +
   geom_point(aes(color = `Region`)) +
   facet_wrap(.~`Year`) +
   labs(title = "Changes by Region across Decades  
@@ -296,8 +298,26 @@ ggplot(all4, aes(`Life Expectancy`, `Fertility Rate`, size = `Population`), na.r
   + Make a line plot of year versus total population, color-coding by region and using a log scale.
   + Your final plot should look like this:
   + **Interpret the plot in one sentence to identify the fastest growing regions**.
-   <span style="color: red;">text</span>
+```{r 3.5, echo=FALSE, message=FALSE, warning=FALSE}
+all4_no2018 <- all4 %>%
+    filter(Year != c(2018))  %>%
+  select(Population, Year, Region) %>%
+  group_by(Region, Year) %>%
+  summarise(all_pop = sum(Population))
+
+ggplot(all4_no2018, aes(`Year`, log(`all_pop`))) +
+  geom_line(aes(color = `Region`)) +
+  labs(x = "Years", y = "Total Population (Log scale)", title = "Population by Region") +
+  theme_bw()
+```
+  
+   <span style="color: red;">Among all, Sub-Saharan Africa are the fastest growing regions</span>  
+   
 6. Make a bar plot of population vs region for the year 2010.  
   + Order the bars on the $y$-axis in **decreasing** order of population. 
   + Your final plot should look like this:
+```{r}
+
+```
+  
 <span style="color: red;">text</span>
