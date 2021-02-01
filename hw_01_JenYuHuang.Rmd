@@ -141,14 +141,14 @@ ggplot(new_cs200601_I1, aes(PCT_WHITE, MN_EARN_WNE_P10)) +
   geom_smooth(method = "loess", se = F)
 ```
 
-<span style="color: red;"></span>
+<span style="color: red;">There's a positive correlation from 0 ~ 75 percent of the population from students’ zip codes that is White, but has a negative correlation from 75% ~ 100%</span>
 ```{r 2.6-2, echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(new_cs200601_I1, aes(FEMALE, MN_EARN_WNE_P10)) +
   geom_point() +
   geom_smooth(method = "loess", se = F)
 ```
 
-<span style="color: red;"></span>  
+<span style="color: red;">The mean earnings of students working and not enrolled 10 years after entry basically decrease while the share of female students increase</span>  
 
 7. Create a scatter plot of the mean earnings 10 years after enrollment (Y) axis) compared to the median earnings 10 years after enrollment (X axis) using log scales for both.  
   + Add an abline. 
