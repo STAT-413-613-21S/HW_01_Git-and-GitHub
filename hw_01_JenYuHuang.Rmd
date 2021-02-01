@@ -47,11 +47,11 @@ Analysis Elements: Rename the starter file under the analysis directory as `hw_0
 # Canvas Picture, Syllabus, and Student Info
 Review the Syllabus on Canvas and answer the following questions:
 
-I, *enter your name*  have:
+I, *Jen Yu Huang*  have:
 
 1. Added a photo of myself (headshot) to my Canvas profile
 
-2. Reviewed the syllabus and the associated policies on the following date: _____________
+2. Reviewed the syllabus and the associated policies on the following date: ____Feb 01_________
 
 3. Reviewed the American University policies on academic integrity, and understand how they apply to this course and  agree to comply with them for this course
 
@@ -80,6 +80,10 @@ The data folder contains "college_score_200601.csv", a subset of the data in the
 2. If you used the default settings for reading in the data, 11 variables are probably type character when they should be numeric. 
   + Which ones? 
   + Why were they read in as type character? 
+```{r}
+
+```
+
  
 3. Use a readr function to fix these variables to be numeric and save the updated tibble.
     
