@@ -153,7 +153,14 @@ ggplot(new_cs200601_I1, aes(FEMALE, MN_EARN_WNE_P10)) +
 7. Create a scatter plot of the mean earnings 10 years after enrollment (Y) axis) compared to the median earnings 10 years after enrollment (X axis) using log scales for both.  
   + Add an abline. 
   + Interpret the plot and the relationship between the two variables.
-<span style="color: red;">text</span>  
+```{r 2.7, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(new_cs200601, aes(log(MD_EARN_WNE_P10), log(MN_EARN_WNE_P10))) +
+  geom_point() +
+  geom_abline(colour = 'red')
+```
+  
+<span style="color: red;"> The mean earnings 10 years after enrollment and the median earnings 10 years after enrollment has a positive correlation</span>  
+
 8. Compute a ranking of level 1 universities based on the ratio of mean earnings 10 years after enrollment compared to median graduation debt.   
   + Identify the top 5 best (highest ROI should be #1 ) and the bottom 5 worst?  
   <span style="color: red;">text</span>
