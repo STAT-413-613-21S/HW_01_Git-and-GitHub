@@ -84,6 +84,7 @@ The data folder contains "college_score_200601.csv", a subset of the data in the
 2. If you used the default settings for reading in the data, 11 variables are probably type character when they should be numeric. 
   + Which ones?  
   <span style="color: red;">MN_EARN_WNE_P10, MD_EARN_WNE_P10, SAT_AVG, ADM_RATE, UGDS, COSTT4_A, AVGFACSAL, GRAD_DEBT_MDN, AGE_ENTRY, FEMALE, PCT_WHITE</span>  
+  
   + Why were they read in as type character?  
   <span style="color: red;">There are some non-integer in the observations, so R will read in as character</span>  
  
@@ -106,9 +107,26 @@ new_cs200601 <- read_csv("college_score_200601.csv",
 ```
      
 4. How is average faculty salary associated the mean earnings of students ten years after initial enrollment? Create an appropriate plot and interpret the plot to justify your answer.
-<span style="color: red;">text</span>  
+```{r 2.4, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(new_cs200601, aes(AVGFACSAL, MN_EARN_WNE_P10)) +
+  labs(x = "Average Faculty Salary", y = "Mean Earnings of Students Ten Years After Initial Enrollment") +
+  geom_point() +
+  geom_smooth(method = lm)
+```
+
+<span style="color: red;">As we can see from the plot, the average faculty salary has a positive correlation with the mean earnings of students ten years after initial enrollment</span>  
+
 5. Does the level of the institution seem to be associated with the mean earnings of students ten years after enrollment? Reproduce this plot in R to explore this relationship and interpret the plot:
-<span style="color: red;">text</span>  
+```{r 2.5, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(new_cs200601, aes(as.factor(ICLEVEL), log(MN_EARN_WNE_P10))) +
+  labs(x = "Level of Institution",
+       y = "Log of Mean Earnings",
+       title = "Mean Earnings 10 Years after Enrollment by Level of Institution") +
+  geom_boxplot()
+```
+
+<span style="color: red;">The lower level, e.g. level1, has higher mean earnings on average than the higher level e.g. level3</span>  
+
 6. Plot the mean earnings 10 years after enrollment for level 1 institutions as the Y axis against PCT_WHITE and, in a second plot, against FEMALE.  
 - Use a log scale as appropriate.
 - Add a loess smoother. 
