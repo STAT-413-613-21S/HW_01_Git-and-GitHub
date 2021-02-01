@@ -484,15 +484,37 @@ summary {
 </ul>
 <p><span style="color: red;"> The mean earnings 10 years after enrollment and the median earnings 10 years after enrollment has a positive correlation</span></p>
 <ol start="8" style="list-style-type: decimal">
-<li>Compute a ranking of level 1 universities based on the ratio of mean earnings 10 years after enrollment compared to median graduation debt.<br />
-</li>
+<li>Compute a ranking of level 1 universities based on the ratio of mean earnings 10 years after enrollment compared to median graduation debt.</li>
 </ol>
+<pre><code>## # A tibble: 5 x 2
+## # Groups:   INSTNM [5]
+##   INSTNM                                    ranking
+##   &lt;chr&gt;                                       &lt;dbl&gt;
+## 1 SUNY Downstate Health Sciences University    13.6
+## 2 Stanford University                          12.5
+## 3 Massachusetts Institute of Technology        12.3
+## 4 California Institute of Technology           12.2
+## 5 Princeton University                         11.8</code></pre>
+<pre><code>## # A tibble: 5 x 2
+## # Groups:   INSTNM [5]
+##   INSTNM                                          ranking
+##   &lt;chr&gt;                                             &lt;dbl&gt;
+## 1 Martin University                                 0.612
+## 2 Messenger College                                 0.648
+## 3 Benedict College                                  0.682
+## 4 Southwest University of Visual Arts-Tucson        0.705
+## 5 Southwest University of Visual Arts-Albuquerque   0.705</code></pre>
+<pre><code>## # A tibble: 1 x 2
+## # Groups:   INSTNM [1]
+##   INSTNM              ranking
+##   &lt;chr&gt;                 &lt;dbl&gt;
+## 1 American University    2.91</code></pre>
 <ul>
-<li>Identify the top 5 best (highest ROI should be #1 ) and the bottom 5 worst?<br />
-<span style="color: red;">text</span></li>
-<li>What is American University’s rank and ROI?<br />
-<span style="color: red;">text</span></li>
-<li>Extra Credit:
+<li><p>Identify the top 5 best (highest ROI should be #1 ) and the bottom 5 worst?<br />
+<span style="color: red;">As shown in table</span></p></li>
+<li><p>What is American University’s rank and ROI?<br />
+<span style="color: red;">Rank 408, ROI 2.907077</span></p></li>
+<li><p>Extra Credit:</p>
 <ul>
 <li>Reproduce the following plot so the <em>AU line automatically adjusts as the new data is entered</em>: <span style="color: red;">text</span></li>
 <li>What is AU’s new ranking and ROI if the median earnings are used?</li>

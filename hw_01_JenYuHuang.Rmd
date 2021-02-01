@@ -60,7 +60,7 @@ I, *<span style="color: red;">Jen Yu Huang</span>*  have:
 # College Scorecard
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
-library(dplyr)
+library(magrittr)
 cs200601 <- read_csv("college_score_200601.csv")
 ```
 
@@ -162,10 +162,37 @@ ggplot(new_cs200601, aes(log(MD_EARN_WNE_P10), log(MN_EARN_WNE_P10))) +
 <span style="color: red;"> The mean earnings 10 years after enrollment and the median earnings 10 years after enrollment has a positive correlation</span>  
 
 8. Compute a ranking of level 1 universities based on the ratio of mean earnings 10 years after enrollment compared to median graduation debt.   
+```{r 2.8, echo=FALSE, message=FALSE, warning=FALSE}
+new_cs200601_I1 <- mutate(new_cs200601_I1,
+                          ranking = MN_EARN_WNE_P10 / GRAD_DEBT_MDN)
+
+new_cs200601_I1 %>%
+  group_by(INSTNM) %>%
+  filter(ranking == max(ranking)) %>%
+  select(INSTNM, ranking) %>%
+  arrange(desc(ranking)) %>%
+  head(5)
+
+new_cs200601_I1 %>%
+  group_by(INSTNM) %>%
+  filter(ranking == max(ranking)) %>%
+  select(INSTNM, ranking) %>%
+  arrange(ranking) %>%
+  head(5)
+
+new_cs200601_I1 %>%
+  group_by(INSTNM) %>%
+  filter(ranking == max(ranking)) %>%
+  select(INSTNM, ranking) %>%
+  arrange(desc(ranking)) %>%
+  filter(INSTNM == "American University")
+```
+
   + Identify the top 5 best (highest ROI should be #1 ) and the bottom 5 worst?  
-  <span style="color: red;">text</span>
+  <span style="color: red;">As shown in table</span>
   + What is American University's rank and ROI?  
-  <span style="color: red;">text</span>
+  <span style="color: red;">Rank 408, ROI 2.907077</span>  
+  
 - Extra Credit: 
   + Reproduce the following plot so the *AU line automatically   adjusts as the new data is entered*:
   <span style="color: red;">text</span>
