@@ -60,6 +60,7 @@ I, *<span style="color: red;">Jen Yu Huang</span>*  have:
 # College Scorecard
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
+library(dplyr)
 cs200601 <- read_csv("college_score_200601.csv")
 ```
 
@@ -102,7 +103,8 @@ new_cs200601 <- read_csv("college_score_200601.csv",
   GRAD_DEBT_MDN = col_double(),
   AGE_ENTRY = col_double(),
   FEMALE = col_double(),
-  PCT_WHITE = col_double()
+  PCT_WHITE = col_double(),
+  ICLEVEL = col_factor()
 ))
 ```
      
@@ -131,7 +133,23 @@ ggplot(new_cs200601, aes(as.factor(ICLEVEL), log(MN_EARN_WNE_P10))) +
 - Use a log scale as appropriate.
 - Add a loess smoother. 
 - Describe and interpret the relationship, if any, in each of the plots.
-<span style="color: red;">text</span>  
+```{r 2.6-1, echo=FALSE, message=FALSE, warning=FALSE}
+new_cs200601_I1 <- filter(new_cs200601, ICLEVEL == '1')
+
+ggplot(new_cs200601_I1, aes(PCT_WHITE, MN_EARN_WNE_P10)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = F)
+```
+
+<span style="color: red;"></span>
+```{r 2.6-2, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(new_cs200601_I1, aes(FEMALE, MN_EARN_WNE_P10)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = F)
+```
+
+<span style="color: red;"></span>  
+
 7. Create a scatter plot of the mean earnings 10 years after enrollment (Y) axis) compared to the median earnings 10 years after enrollment (X axis) using log scales for both.  
   + Add an abline. 
   + Interpret the plot and the relationship between the two variables.
