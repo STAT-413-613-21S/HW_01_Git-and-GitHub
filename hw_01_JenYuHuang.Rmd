@@ -300,6 +300,7 @@ ggplot(all4_6010, aes(`Life Expectancy`, `Fertility Rate`, size = `Population`),
   + **Interpret the plot in one sentence to identify the fastest growing regions**.
 ```{r 3.5, echo=FALSE, message=FALSE, warning=FALSE}
 all4_no2018 <- all4 %>%
+  drop_na() %>%
     filter(Year != c(2018))  %>%
   select(Population, Year, Region) %>%
   group_by(Region, Year) %>%
@@ -316,8 +317,16 @@ ggplot(all4_no2018, aes(`Year`, log(`all_pop`))) +
 6. Make a bar plot of population vs region for the year 2010.  
   + Order the bars on the $y$-axis in **decreasing** order of population. 
   + Your final plot should look like this:
-```{r}
+```{r 3.6, echo=FALSE, message=FALSE, warning=FALSE}
+all4_2010 <- all4 %>%
+  drop_na() %>%
+    filter(Year == c(2010)) %>%
+  select(Population, Year, Region) %>%
+  group_by(Region, Year) %>%
+  summarise(all_pop = sum(Population)) %>%
+  mutate(all_pop_per_millions = all_pop/1000000)
 
+ggplot(all4_2010, aes(reorder(`Region`, -all_pop_per_millions), `all_pop_per_millions`)) + geom_col(stat = "identity", fill = "blue") +
+  labs(y = "Total Population (in Millions)", x= "Region", title = "2010 Population by Region") +
+  coord_flip() 
 ```
-  
-<span style="color: red;">text</span>
